@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <div class="container-fluid bar text-center pt-2">
+            <div class="row">
+                <div class="col header_title">
+                    DASHBOARD DE MONITORAMENTO DE SAÚDE
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="row m-3">
+        <div class="col"></div>
+    </div>
+
+    <div class="container area_sono">
+        <div class="row pt-3 pb-3 m-1">
+            <div class="col-6 border_l paciente_desc">DATA ATUAL: <span id="data_atual"></span></div>
+            <div class="col-6 border_l paciente_desc">ULTIMA ATUALIZAÇÃO: <span id="ultima_att"></span></div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col"></div>
+    </div>
+
+
+
+    <div class="container area_paciente">
+        <div class="row">
+
+            <div class="col-2">
+                <div class="row">
+                    <div class="col pt-3 pb-3 m-3">
+                        <div class="paciente_img"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-10">
+                <div class="row">
+                    <div class="col pt-3 mt-3">
+                        <div class="paciente_nome title" id="info_nome"></div>
+                    </div>
+                    <div class="col-2 pt-3 mt-3">
+                        <div class="paciente_id text-center mt-3" id="info_id">ID: 1</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="paciente_info border_l" id="info_data">01/03/2000</div>
+                    </div>
+                    <div class="col">
+                        <div class="paciente_info border_l" id="info_idade">22</div>
+                    </div>
+                    <div class="col">
+                        <div class="paciente_info border_l" id="info_altura">1,70</div>
+                    </div>
+                    <div class="col">
+                        <div class="paciente_info border_l" id="info_peso">58,2</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="paciente_desc border_l">Data de nascimento</div>
+                    </div>
+                    <div class="col">
+                        <div class="paciente_desc border_l">Idade</div>
+                    </div>
+                    <div class="col">
+                        <div class="paciente_desc border_l">Altura</div>
+                    </div>
+                    <div class="col">
+                        <div class="paciente_desc border_l">Peso</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col"></div>
+    </div>
+
+    <div class="container area_sono">
+        <div class="row pt-3 pb-3 m-1">
+            <div class="col-6 border_l paciente_desc">QUALIDADE DO ÚLTIMO SONO: BOM</div>
+            <div class="col-6 border_l paciente_desc">QUANTIDADE DE HORAS DORMIDA: 8 HORAS</div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col"></div>
+    </div>
+
+    <div class="container area_1">
+        <div class="row">
+            <div class="col-4 area_temperatura pt-3 pb-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_info">TEMPERATURA</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">ATUAL</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col temperatura text-center">
+                        <span id="temperatura_atual"></span>°
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="paciente_desc text-center" id="temperatura_atual_nivel"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">ANTERIORES</div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col paciente_desc">
+                        <div class="row">
+                            <div class="col" id="temperatura1">xx,x° às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="temperatura2">xx,x° às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="temperatura3">xx,x° às XX:XX</div>
+                        </div>
+                    </div>
+                    <div class="col paciente_desc">
+                        <div class="row">
+                            <div class="col" id="temperatura4">xx,x° às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="temperatura5">xx,x° às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="temperatura6">xx,x° às XX:XX</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col area_estresse pt-3 pb-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_info">NÍVEL DE ESTRESSE</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">ATUAL</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="col estresse text-center">
+                            <span id="estresse_atual"></span>%
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="paciente_desc text-center" id="estresse_atual_nivel"></div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col text-center">
+                        <div class="gauge_estresse">
+                            <div class="gauge_estresse_grau"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">LEGENDA</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col paciente_desc text-center">
+                        <div>
+                            <span class="grau1">---</span> 0 a 10%<span style="color: white">-</span>
+                            <span class="grau2">---</span> 11 a 40%<span style="color: white">-</span>
+                            <span class="grau3">---</span> 41 a 70%<span style="color: white">-</span>
+                            <span class="grau4">---</span> 71 a 90%<span style="color: white">-</span>
+                            <span class="grau5">---</span> 91 a 100%<span style="color: white">-</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col"></div>
+    </div>
+
+    <div class="container area_bpm pt-3 pb-3">
+        <div class="row">
+            <div class="col">
+                <div class="border_l paciente_info">FREQUENCIA CARDIACA</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="border_l paciente_desc">BPM - BATIMENTOS POR MINUTO</div>
+            </div>
+        </div>
+
+        <div class="row pt-3 pl-2 pl-2">
+            <div class="col">
+                <div id="line_top_x" style="width: 100%; height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col"></div>
+    </div>
+
+    <div class="container area_2">
+        <div class="row">
+            <div class="col area_ansiedade pt-3 pb-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_info">NÍVEL DE ANSIEDADE</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">ATUAL</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="col ansiedade text-center">
+                            <span id="ansiedade_atual"></span>%
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="paciente_desc text-center" id="ansiedade_atual_nivel"></div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col text-center">
+                        <div class="gauge_ansiedade">
+                            <div class="gauge_ansiedade_grau"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">LEGENDA</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col paciente_desc text-center">
+                        <div>
+                            <span class="grau1">---</span> 0 a 10%<span style="color: white">-</span>
+                            <span class="grau2">---</span> 11 a 40%<span style="color: white">-</span>
+                            <span class="grau3">---</span> 41 a 70%<span style="color: white">-</span>
+                            <span class="grau4">---</span> 71 a 90%<span style="color: white">-</span>
+                            <span class="grau5">---</span> 91 a 100%<span style="color: white">-</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-4 area_o2 pt-3 pb-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_info">SATURAÇÃO</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">ATUAL</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col temperatura text-center">
+                        <span id="saturacao_atual"></span>%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="paciente_desc text-center" id="saturacao_atual_nivel"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="border_l paciente_desc">ANTERIORES</div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col paciente_desc">
+                        <div class="row">
+                            <div class="col" id="saturacao1">xx% às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="saturacao2">xx% às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="saturacao3">xx% às XX:XX</div>
+                        </div>
+                    </div>
+                    <div class="col paciente_desc">
+                        <div class="row">
+                            <div class="col" id="saturacao4">xx% às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="saturacao5">xx% às XX:XX</div>
+                        </div>
+                        <div class="row">
+                            <div class="col" id="saturacao6">xx% às XX:XX</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col"></div>
+    </div>
+
+    <div class="container area_paciente pt-3 pb-3">
+        <div class="row">
+            <div class="col">
+                <div class="border_l paciente_info">OBSERVAÇÕES</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col pt-2">
+                <div class="paciente_desc text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
+                    more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="border_l paciente_info">ULTIMA VISITA</div>
+            </div>
+            <div class="row">
+                <div class="col pt-2 paciente_desc">05/10/2022 às 11:45</div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="border_l paciente_info">CONTATOS</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col pt-2 paciente_desc">contato.familia@gmail.com</div>
+        </div>
+        <div class="row">
+            <div class="col paciente_desc">(11) 1234-5678</div>
+        </div>
+    </div>
+
+    <div class="containter-fluid rodape">
+        <div class="row m-5">
+            <div class="col"></div>
+        </div>
+        <div class="row m-5">
+            <div class="col"></div>
+        </div>
+        <div class="row m-5">
+            <div class="col"></div>
+        </div>
+        <div class="row m-5">
+            <div class="col"></div>
+        </div>
+        <div class="row m-5">
+            <div class="col"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col rodape_title text-center">
+                    TCC - TECNOLOGIA ASSISTIVA PARA IDOSOS: Como a tecnologia pode melhorar a vida da terceira idade
+                </div>
+            </div>
+            <div class="row">
+                <div class="col rodape_desc text-center">Universidade Cidade de São Paulo - São Paulo - 2022</div>
+            </div>
+            <div class="row">
+                <div class="col rodape_desc text-center"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

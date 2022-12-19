@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap');
+body {
+    background-color: #eeeeee!important;
+}
+
+.bar {
+    background: #4150aa;
+    color: #fff;
+    height: 45px !important;
+    font-family: 'Roboto';
+}
+
+.rodape {
+    background-image: url("rodape.png");
+    height: 370px;
+}
+
+.rodape_title,
+.header_title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+}
+
+.rodape_desc {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+}
+
+.area_paciente {
+    background: white;
+    border-radius: 6px;
+    -webkit-box-shadow: 2px 0px 18px 0px rgba(0, 0, 0, 0.27);
+    box-shadow: 2px 0px 18px 0px rgba(0, 0, 0, 0.27);
+}
+
+.area_sono,
+.area_temperatura,
+.area_estresse,
+.area_bpm,
+.area_o2,
+.area_ansiedade {
+    background: white;
+    border-radius: 6px;
+    -webkit-box-shadow: 2px 0px 18px 0px rgba(0, 0, 0, 0.27);
+    box-shadow: 2px 0px 18px 0px rgba(0, 0, 0, 0.27);
+}
+
+.area_temperatura {
+    margin-right: 2%;
+}
+
+.area_o2 {
+    margin-left: 2%;
+}
+
+.temperatura,
+.estresse,
+.ansiedade {
+    font-family: 'Poppins', sans-serif;
+    font-size: 90px;
+    font-weight: 600;
+}
+
+.paciente_img {
+    background: #4150aa;
+    height: 170px;
+    width: 170px;
+    border-radius: 100%;
+    background-image: url("icon_img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.paciente_info {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    color: #575757;
+}
+
+.paciente_desc {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #575757;
+}
+
+.border_l {
+    border-left: 3px solid #575757;
+    padding-left: 5px;
+}
+
+.gauge_estresse {
+    width: 100%;
+    height: 50px;
+    background: #dbdbdb;
+    border-radius: 50px;
+}
+
+.gauge_estresse_grau {
+    height: 50px;
+    border-radius: 50px;
+}
+
+.gauge_ansiedade {
+    width: 100%;
+    height: 50px;
+    background: #dbdbdb;
+    border-radius: 50px;
+}
+
+.gauge_ansiedade_grau {
+    height: 50px;
+    border-radius: 50px;
+}
+
+.gauge-grau1 {
+    width: 5%;
+    height: 50px;
+    background: #2ebb5d;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.gauge-grau2 {
+    width: 25%;
+    height: 50px;
+    background: #79e250;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.gauge-grau3 {
+    width: 50%;
+    height: 50px;
+    background: #eed04a;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.gauge-grau4 {
+    width: 78%;
+    height: 50px;
+    background: #fa9e15;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.gauge-grau5 {
+    width: 100%;
+    height: 50px;
+    background: #d4473d;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+}
+
+.grau1 {
+    background: #2ebb5d;
+    border-radius: 100%;
+    color: #2ebb5d;
+}
+
+.grau2 {
+    background: #79e250;
+    border-radius: 100%;
+    color: #79e250;
+}
+
+.grau3 {
+    background: #eed04a;
+    border-radius: 100%;
+    color: #eed04a;
+}
+
+.grau4 {
+    background: #fa9e15;
+    border-radius: 100%;
+    color: #fa9e15;
+}
+
+.grau5 {
+    background: #d4473d;
+    border-radius: 100%;
+    color: #d4473d;
+}
+
+.paciente_id {
+    background: #4150aa;
+    color: white;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+}
